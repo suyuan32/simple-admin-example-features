@@ -1,0 +1,30 @@
+Name: example.rpc
+ListenOn: 0.0.0.0:8080
+
+
+Log:
+  ServiceName: exampleRpcLogger
+  Mode: file
+  Path: /home/data/logs/example/rpc
+  Encoding: json
+  Level: info
+  Compress: false
+  KeepDays: 7
+  StackCoolDownMillis: 100
+
+Prometheus:
+  Host: 0.0.0.0
+  Port: 4001
+  Path: /metrics
+
+DatabaseConf:
+  Type: mysql
+  Path: "127.0.0.1"
+  Port: 3306
+  Config: charset=utf8mb4&parseTime=True&loc=Local
+  DBName: simple_admin
+  Username:
+  Password:
+  MaxIdleConn: 10
+  MaxOpenConn: 100
+  LogMode: error
