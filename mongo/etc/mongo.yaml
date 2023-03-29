@@ -1,0 +1,37 @@
+Name: mongo.api
+Host: 0.0.0.0
+Port: 8081
+Timeout: 30000
+
+Auth:
+  AccessSecret: # the same as core
+  AccessExpire: 259200
+
+Log:
+  ServiceName: mongoApiLogger
+  Mode: file
+  Path: /home/data/logs/mongo/api
+  Level: info
+  Compress: false
+  KeepDays: 7
+  StackCoolDownMillis: 100
+
+Prometheus:
+  Host: 0.0.0.0
+  Port: 4000
+  Path: /metrics
+
+
+RedisConf:
+  Host: 192.168.50.216:6379
+  Type: node
+
+MongodbConf:
+  Host: 192.168.50.216
+  Port: 27017
+  DBName: school
+  Username: root # set your username
+  Password: simple_admin # set your password
+  AuthMechanism: SCRAM-SHA-256
+  AuthSource: admin
+  Option: ?connect=direct
