@@ -2,7 +2,11 @@ package base
 
 import (
 	"context"
+	"fmt"
 
+	"gorm.io/gorm"
+
+	"github.com/suyuan32/simple-admin-example-rpc/internal/model"
 	"github.com/suyuan32/simple-admin-example-rpc/internal/svc"
 	"github.com/suyuan32/simple-admin-example-rpc/types/example"
 
@@ -24,7 +28,15 @@ func NewInitDatabaseLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Init
 }
 
 func (l *InitDatabaseLogic) InitDatabase(in *example.Empty) (*example.BaseResp, error) {
-	// todo: add your logic here and delete this line
+	data := &model.Api{
+		Model:       gorm.Model{},
+		Path:        "/api/create",
+		Description: "hello",
+		ApiGroup:    "/apis",
+		Method:      "POST",
+	}
+	result := l.svcCtx.DB.Create(&data)
+	fmt.Println(result)
 
 	return &example.BaseResp{}, nil
 }
