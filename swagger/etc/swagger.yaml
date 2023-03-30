@@ -1,0 +1,23 @@
+Name: swagger.api
+Host: 0.0.0.0
+Port: 8081
+Timeout: 30000
+
+Auth:
+  AccessSecret: # the same as core
+  AccessExpire: 259200
+
+Log:
+  ServiceName: swaggerApiLogger
+  Mode: file
+  Path: /home/data/logs/swagger/api
+  Level: info
+  Compress: false
+  KeepDays: 7
+  StackCoolDownMillis: 100
+
+Prometheus:
+  Host: 0.0.0.0
+  Port: 4000
+  Path: /metrics
+

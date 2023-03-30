@@ -1,0 +1,255 @@
+basePath: /
+consumes:
+    - application/json
+definitions:
+    BaseDataInfo:
+        description: The basic response with data | 基础带数据信息
+        properties:
+            code:
+                description: Error code | 错误代码
+                format: int64
+                type: integer
+                x-go-name: Code
+            data:
+                description: Data | 数据
+                type: string
+                x-go-name: Data
+            msg:
+                description: Message | 提示信息
+                type: string
+                x-go-name: Msg
+        type: object
+        x-go-package: swagger/internal/types
+    BaseIDInfo:
+        description: The base ID response data | 基础ID信息
+        properties:
+            createdAt:
+                description: Create date | 创建日期
+                format: int64
+                type: integer
+                x-go-name: CreatedAt
+            id:
+                description: ID
+                format: uint64
+                type: integer
+                x-go-name: Id
+            updatedAt:
+                description: Update date | 更新日期
+                format: int64
+                type: integer
+                x-go-name: UpdatedAt
+        type: object
+        x-go-package: swagger/internal/types
+    BaseListInfo:
+        description: The basic response with data | 基础带数据信息
+        properties:
+            data:
+                description: Data | 数据
+                type: string
+                x-go-name: Data
+            total:
+                description: The total number of data | 数据总数
+                format: uint64
+                type: integer
+                x-go-name: Total
+        type: object
+        x-go-package: swagger/internal/types
+    BaseMsgResp:
+        description: The basic response without data | 基础不带数据信息
+        properties:
+            code:
+                description: Error code | 错误代码
+                format: int64
+                type: integer
+                x-go-name: Code
+            msg:
+                description: Message | 提示信息
+                type: string
+                x-go-name: Msg
+        type: object
+        x-go-package: swagger/internal/types
+    BaseUUIDInfo:
+        description: The base UUID response data | 基础UUID信息
+        properties:
+            createdAt:
+                description: Create date | 创建日期
+                format: int64
+                type: integer
+                x-go-name: CreatedAt
+            id:
+                description: ID
+                type: string
+                x-go-name: Id
+            updatedAt:
+                description: Update date | 更新日期
+                format: int64
+                type: integer
+                x-go-name: UpdatedAt
+        type: object
+        x-go-package: swagger/internal/types
+    IDPathReq:
+        description: Basic ID request | 基础ID地址参数请求
+        properties:
+            Id:
+                description: ID
+                format: uint64
+                type: integer
+        required:
+            - Id
+        type: object
+        x-go-package: swagger/internal/types
+    IDReq:
+        description: Basic ID request | 基础ID参数请求
+        properties:
+            id:
+                description: ID
+                format: uint64
+                type: integer
+                x-go-name: Id
+        required:
+            - id
+        type: object
+        x-go-package: swagger/internal/types
+    IDsReq:
+        description: Basic IDs request | 基础ID数组参数请求
+        properties:
+            ids:
+                description: IDs
+                items:
+                    format: uint64
+                    type: integer
+                type: array
+                x-go-name: Ids
+        required:
+            - ids
+        type: object
+        x-go-package: swagger/internal/types
+    PageInfo:
+        description: The page request parameters | 列表请求参数
+        properties:
+            page:
+                description: Page number | 第几页
+                format: uint64
+                type: integer
+                x-go-name: Page
+            pageSize:
+                description: Page size | 单页数据行数
+                format: uint64
+                maximum: 100000
+                type: integer
+                x-go-name: PageSize
+        required:
+            - page
+            - pageSize
+        type: object
+        x-go-package: swagger/internal/types
+    UUIDReq:
+        description: Basic UUID request | 基础UUID参数请求
+        properties:
+            id:
+                description: ID
+                maxLength: 36
+                type: string
+                x-go-name: Id
+        required:
+            - id
+        type: object
+        x-go-package: swagger/internal/types
+    UUIDsReq:
+        description: Basic UUID array request | 基础UUID数组参数请求
+        properties:
+            ids:
+                description: Ids
+                items:
+                    type: string
+                type: array
+                x-go-name: Ids
+        required:
+            - ids
+        type: object
+        x-go-package: swagger/internal/types
+host: localhost:8081
+info:
+    description: 'Description: swagger service'
+    title: swagger
+    version: 0.0.1
+paths:
+    /init/database:
+        get:
+            description: Initialize database | 初始化数据库
+            operationId: InitDatabase
+            responses:
+                "200":
+                    description: BaseMsgResp
+                    schema:
+                        $ref: '#/definitions/BaseMsgResp'
+            summary: Initialize database | 初始化数据库
+            tags:
+                - base
+    /init/test/{name}/{age}:
+        get:
+            description: Path Params Test | 路径参数测试
+            operationId: TestPath
+            parameters:
+                - description: Name | 名称
+                  in: path
+                  name: name
+                  required: true
+                  type: string
+                  x-go-name: Name
+                - description: Age | 年龄
+                  in: path
+                  name: age
+                  required: true
+                  type: string
+                  x-go-name: Age
+            responses:
+                "200":
+                    description: BaseMsgResp
+                    schema:
+                        $ref: '#/definitions/BaseMsgResp'
+            summary: Path Params Test | 路径参数测试
+            tags:
+                - base
+    /init/test_query:
+        get:
+            description: Query Params Test | 表格参数测试
+            operationId: TestQuery
+            parameters:
+                - description: Name | 名称
+                  in: query
+                  name: Name
+                  type: string
+                - description: Age | 年龄
+                  in: query
+                  name: Age
+                  type: string
+            responses:
+                "200":
+                    description: BaseMsgResp
+                    schema:
+                        $ref: '#/definitions/BaseMsgResp'
+            summary: Query Params Test | 表格参数测试
+            tags:
+                - base
+produces:
+    - application/json
+responses:
+    SimpleMsg:
+        description: The simplest message | 最简单的信息
+        headers:
+            msg:
+                description: Message | 信息
+                type: string
+schemes:
+    - http
+    - https
+security:
+    - Token:
+        - '[]'
+securityDefinitions:
+    Token:
+        in: header
+        name: Authorization
+        type: apiKey
+swagger: "2.0"
