@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	entgo.io/ent v0.11.10
-	github.com/suyuan32/simple-admin-common v0.2.9
+	github.com/suyuan32/simple-admin-common v0.3.0
 	github.com/zeromicro/go-zero v1.5.0
 )
 
@@ -17,7 +17,7 @@ require (
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/fatih/color v1.15.0 // indirect
 	github.com/felixge/fgprof v0.9.3 // indirect
-	github.com/go-logr/logr v1.2.3 // indirect
+	github.com/go-logr/logr v1.2.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-openapi/inflect v0.19.0 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect

@@ -10,25 +10,31 @@ import (
 	"swagger/internal/types"
 )
 
-// swagger:route get /init/test/{name}/{age} base TestPath
+// swagger:route post /init/test_body base TestBody
 //
-// Path Params Test | 路径参数测试
+// Body Params Test | 表格参数测试
 //
-// Path Params Test | 路径参数测试
+// Body Params Test | 表格参数测试
+//
+// Parameters:
+//  + name: body
+//    require: true
+//    in: body
+//    type: BodyType
 //
 // Responses:
 //  200: BaseMsgResp
 
-func TestPathHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func TestBodyHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.PathType
+		var req types.BodyType
 		if err := httpx.Parse(r, &req, true); err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 			return
 		}
 
-		l := base.NewTestPathLogic(r.Context(), svcCtx)
-		resp, err := l.TestPath(&req)
+		l := base.NewTestBodyLogic(r.Context(), svcCtx)
+		resp, err := l.TestBody(&req)
 		if err != nil {
 
 			httpx.ErrorCtx(r.Context(), w, err)

@@ -117,19 +117,28 @@ type BaseUUIDInfo struct {
 type PathType struct {
 	// Name | 名称
 	// in: path
-	Name string `json:"name" path:"name"`
+	Name string `json:"name,optional" path:"name"`
 	// Age | 年龄
 	// in: path
-	Age string `json:"age" path:"age"`
+	Age string `json:"age,optional" path:"age"`
 }
 
 // Query Params | 表格参数
 // swagger:parameters TestQuery
 type QueryType struct {
+	// Name | 名称 (由于go swagger 基于json tag 生成字段，而go zero 使用 form 的时候不能有 json，导致swagger只能生成首字母大写的名称，所以只能在form大写或者改swagger文件为小写)
+	// in: query
+	Name string `json:"name,optional" form:"name"`
+	// Age  | 年龄
+	// in: query
+	Age string `json:"age,optional" form:"age"`
+}
+
+// Body Params | Body参数
+// swagger:model BodyType
+type BodyType struct {
 	// Name | 名称
-	// in: query
-	Name string `form:"name"`
+	Name string `json:"name"`
 	// Age | 年龄
-	// in: query
-	Age string `form:"age"`
+	Age string `json:"age"`
 }

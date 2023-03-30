@@ -28,6 +28,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/init/test_query",
 				Handler: base.TestQueryHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/init/test_body",
+				Handler: base.TestBodyHandler(serverCtx),
+			},
 		},
 	)
 }
