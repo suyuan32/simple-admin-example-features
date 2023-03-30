@@ -125,7 +125,7 @@ type PathType struct {
 // Query Params | 表格参数
 // swagger:parameters TestQuery
 type QueryType struct {
-    // Name | 名称 (由于go swagger 基于json tag 生成字段，而go zero 使用 form 的时候不能有 json，导致swagger只能生成首字母大写的名称，所以只能在form大写或者改swagger文件为小写)
+    // Name | 名称 (json tag 需要设置为 optional ， 避免 go zero 检测)
     // in: query
     Name string `json:"name,optional" form:"name"`
 
