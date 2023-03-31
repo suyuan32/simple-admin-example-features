@@ -149,9 +149,9 @@ type BodyType struct {
 )
 
 service swagger {
-	// Initialize database | 初始化数据库
-	@handler initDatabase
-	get /init/database returns (BaseMsgResp)
+    // Initialize database | 初始化数据库
+    @handler initDatabase
+    get /init/database returns (BaseMsgResp)
 
     // Path Params Test | 路径参数测试
     @handler testPath
